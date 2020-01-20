@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only" default-locale="zh-CN">
+    <!-- 当前格式相关信息 -->
+    <info>
+        <title>综合性期刊文献引证技术规范</title>
+        <id>citation-specification-for-general-journal</id>
+        <link href="https://xdxbs.xmu.edu.cn/_upload/article/files/ee/68/6ec516f0439eb4a1ac0a88179316/9afbe77e-5fb0-4b3d-b887-9e2527e4d791.doc" rel="self"/>
+        <link href="https://xdxbs.xmu.edu.cn/_upload/article/files/ee/68/6ec516f0439eb4a1ac0a88179316/9afbe77e-5fb0-4b3d-b887-9e2527e4d791.doc" rel="documentation"/>
+        <author>
+            <name>杨志宏</name>
+            <email>yangjh@yeah.net</email>
+        </author>
+        <category citation-format="numeric"/>
+        <summary>实现了《综合性期刊文献引证技术规范》中的常用功能。但没有实现析出文献、古籍、档案、转引及再引及著者-出版年体例等功能。</summary>
+        <updated>2020-1-20</updated>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    </info>
+
+    <!-- 责任者 -->
+    <macro name="author">
+        <names variable="author">
+            <choose>
+                <if variable="language">
+                    <name delimiter=", " delimiter-precedes-last="always"/>
+                </if>
+                <else>
+                    <name initialize-with=" " name-as-sort-order="all" sort-separator=" " delimiter="、" delimiter-precedes-last="always">
+                    </name>
+                </else>
+            </choose>
+        </names>
+    </macro>
+
+    <!-- 作者连接符 -->
+    <macro name="author-connector">
+        <choose>
+            <if variable="language">
+                <text value=", "/>
+            </if>
+            <else>
+                <text value="："/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 题名 -->
+    <macro name="title-name">
+        <choose>
+            <if variable="language">
+                <group>
+                    <text variable="title" font-style="italic" />
+                </group>
+            </if>
+            <else>
+                <group>
+                    <text variable="title" prefix="《" suffix="》"/>
+                </group>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 期刊论文题名 -->
+    <macro name="article-name">
+        <choose>
+            <if variable="language">
+                <group>
+                    <text variable="title" prefix="“" suffix="”" />
+                </group>
+            </if>
+            <else>
+                <group>
+                    <text variable="title" prefix="《" suffix="》"/>
+                </group>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 期刊题名 -->
+    <macro name="container-title">
+        <choose>
+            <if variable="language">
+                <group delimiter=", ">
+                    <text variable="container-title" text-case="title" font-style="italic"/>
+                    <group>
+                        <text value="vol."/>
+                        <text variable="volume"/>
+                    </group>
+                    <group>
+                        <text value="no."/>
+                        <text variable="issue"/>
+                    </group>
+                    <date variable="issued" prefix="(" suffix=")">
+                        <date-part name="year"/>
+                    </date>
+                </group>
+            </if>
+            <else>
+                <group>
+                    <text variable="container-title" prefix="《" suffix="》"/>
+                    <date variable="issued">
+                        <date-part name="year"/>
+                    </date>
+                    <text value="年第"/>
+                    <text variable="issue"/>
+                    <text value="期"/>
+                </group>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 参考文献中的期刊题名 -->
+    <macro name="container-bib-title">
+        <choose>
+            <if variable="language">
+                <group delimiter=", ">
+                    <text variable="container-title" text-case="title" font-style="italic"/>
+                    <group>
+                        <text value="vol."/>
+                        <text variable="volume"/>
+                    </group>
+                    <group>
+                        <text value="no."/>
+                        <text variable="issue"/>
+                    </group>
+                </group>
+            </if>
+            <else>
+                <group>
+                    <text variable="container-title" prefix="《" suffix="》"/>
+                    <text value="第"/>
+                    <text variable="issue"/>
+                    <text value="期"/>
+                </group>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 译者 -->
+    <macro name="translator">
+        <choose>
+            <if variable="translator">
+                <names variable="translator">
+                    <choose>
+                        <if variable="language">
+                            <text value='trans. '/>
+                            <name delimiter=", " delimiter-precedes-last="always"/>
+                        </if>
+                        <else>
+                            <text macro='translator-chinese'/>
+                        </else>
+                    </choose>
+                </names>
+                <text macro='separator'/>
+            </if>
+        </choose>
+    </macro>
+
+    <!-- 出版商 -->
+    <macro name="location-publisher">
+        <choose>
+            <if variable="language">
+                <text variable='publisher-place' suffix=':'/>
+            </if>
+            <else>
+                <text variable='publisher-place' suffix='：'/>
+            </else>
+        </choose>
+        <text variable='publisher'/>
+    </macro>
+
+    <!-- 著作类页码信息 -->
+    <macro name="locator">
+        <choose>
+            <if variable="language">
+                <text variable="locator" prefix='pp.' />
+            </if>
+            <else>
+                <text variable="locator" prefix='第' suffix='页'/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 期刊类页码信息 -->
+    <macro name="pages">
+        <choose>
+            <if variable="language">
+                <text variable="page" prefix='pp.' />
+            </if>
+            <else>
+                <text variable="page" prefix='第' suffix='页'/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 中文译者 -->
+    <macro name="translator-chinese">
+        <names variable="translator">
+            <name delimiter="、" />
+        </names>
+        <text value='译'/>
+    </macro>
+
+    <!-- 定界符 -->
+    <macro name="separator">
+        <choose>
+            <if variable="language">
+                <text value=", "/>
+            </if>
+            <else>
+                <text value="，"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 参考文献定界符 -->
+    <macro name="bib-separator">
+        <choose>
+            <if variable="language">
+                <text value=". "/>
+            </if>
+            <else>
+                <text value="，"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 结束标记 -->
+    <macro name="end-placehold">
+        <choose>
+            <if variable="language">
+                <text value="."/>
+            </if>
+            <else>
+                <text value="。"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 书籍类出版日期 -->
+    <macro name='book-year'>
+        <date variable="issued">
+            <date-part name="year"/>
+        </date>
+        <choose>
+            <if variable="language">
+                <text value=""/>
+            </if>
+            <else>
+                <text value="年"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 文献出版年份 -->
+    <macro name='bib-year'>
+        <date variable="issued">
+            <date-part name="year"/>
+        </date>
+    </macro>
+
+    <!-- 学位论文类型 -->
+    <macro name='thesis-type'>
+        <text variable='genre'/>
+        <choose>
+            <if variable="language">
+                <text value=""/>
+            </if>
+            <else>
+                <text value="学位论文"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 电子文献发布日期 -->
+    <macro name='webpage-issued'>
+        <choose>
+            <if variable="language">
+                <date variable="issued" delimiter="-">
+                    <date-part name="year"/>
+                    <date-part name="month" form='numeric'/>
+                    <date-part name="day" />
+                </date>
+            </if>
+            <else>
+                <date variable="issued">
+                    <date-part name="year" suffix='年'/>
+                    <date-part name="month" form='numeric' suffix='月'/>
+                    <date-part name="day" suffix='日'/>
+                </date>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 电子文献访问日期 -->
+    <macro name='webpage-accessed'>
+        <choose>
+            <if variable="language">
+                <date variable="accessed" delimiter="-">
+                    <date-part name="year"/>
+                    <date-part name="month" form='numeric'/>
+                    <date-part name="day" />
+                </date>
+            </if>
+            <else>
+                <date variable="accessed">
+                    <date-part name="year" suffix='年'/>
+                    <date-part name="month" form='numeric' suffix='月'/>
+                    <date-part name="day" suffix='日'/>
+                </date>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 电子文献地址 -->
+    <macro name='webpage-url'>
+        <choose>
+            <if variable="language">
+                <text variable="URL"/>
+            </if>
+            <else>
+                <text variable="URL"/>
+            </else>
+        </choose>
+    </macro>
+
+    <!-- 按年份排序 -->
+    <macro name="year-sort">
+        <choose>
+            <if variable="issued">
+                <date variable="issued" form="numeric" date-parts="year"/>
+            </if>
+            <else>
+                <text term="no date" form="short"/>
+            </else>
+        </choose>
+    </macro>
+
+
+    <!-- note注释格式 -->
+    <citation collapse="citation-number" disambiguate-add-names="true" disambiguate-add-givenname="true">
+        <sort>
+            <key variable="citation-number" sort="ascending"/>
+        </sort>
+        <layout>
+            <choose>
+                <!-- 专著 -->
+                <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+                    <text macro="author"/>
+                    <text macro="author-connector"/>
+                    <text macro='title-name'/>
+                    <text macro='separator'/>
+                    <text macro='translator'/>
+                    <text macro='location-publisher'/>
+                    <text macro='separator'/>
+                    <text macro='book-year'/>
+                    <text macro='separator'/>
+                    <text macro="locator"/>
+                </if>
+                <!-- 期刊 -->
+                <else-if type="article-journal article-magazine" match="any">
+                    <text macro="author"/>
+                    <text macro="author-connector"/>
+                    <text macro='article-name'/>
+                    <text macro='separator'/>
+                    <text macro='container-title'/>
+                    <text macro='separator'/>
+                    <text macro='pages'/>
+                </else-if>
+                <!-- 学位论文 -->
+                <else-if type="thesis">
+                    <text macro="author"/>
+                    <text macro="authorconnector"/>
+                    <text macro='title-name'/>
+                    <text macro='separator'/>
+                    <text macro='thesis-type'/>
+                    <text macro='separator'/>
+                    <text variable='publisher'/>
+                    <text macro='separator'/>
+                    <text macro='book-year'/>
+                    <text macro='separator'/>
+                    <text macro='locator'/>
+                </else-if>
+                <!-- 电子文献 -->
+                <else-if type="post-weblog entry-encyclopedia post webpage" match="any">
+                    <text macro="author"/>
+                    <text macro="author-connector"/>
+                    <text macro='title-name'/>
+                    <text macro='separator'/>
+                    <text macro='webpage-issued'/>
+                    <text macro='separator'/>
+                    <text macro='webpage-url'/>
+                    <text macro='separator'/>
+                    <text macro='webpage-accessed'/>
+                </else-if>
+            </choose>
+            <text macro='end-placehold'/>
+        </layout>
+    </citation>
+
+    <!-- 参考文献格式 -->
+    <bibliography hanging-indent="true" et-al-min="11" et-al-use-first="7" entry-spacing="0">
+        <sort>
+            <key macro="author"/>
+            <key macro="year-sort"/>
+            <key variable="title"/>
+        </sort>
+        <layout>
+            <choose>
+                <!-- 专著类 -->
+                <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+                    <text macro="author"/>
+                    <text macro="bib-separator"/>
+                    <text macro="bib-year"/>
+                    <text macro="bib-separator"/>
+                    <text macro='title-name'/>
+                    <text macro="bib-separator"/>
+                    <text macro='translator'/>
+                    <text macro='location-publisher'/>
+                </if>
+                <!-- 期刊 -->
+                <else-if type="article-journal article-magazine" match="any">
+                    <text macro="author"/>
+                    <text macro="bib-separator"/>
+                    <text macro="bib-year"/>
+                    <text macro="bib-separator"/>
+                    <text macro='article-name'/>
+                    <text macro="bib-separator"/>
+                    <text macro='container-bib-title'/>
+                </else-if>
+                <!-- 学位论文 -->
+                <else-if type="thesis">
+                    <text macro="author"/>
+                    <text macro="bib-separator"/>
+                    <text macro="bib-year"/>
+                    <text macro="bib-separator"/>
+                    <text macro='title-name'/>
+                    <text macro="bib-separator"/>
+                    <text macro='thesis-type'/>
+                    <text macro="bib-separator"/>
+                    <text macro='location-publisher'/>
+                </else-if>
+                <!-- 电子文献 -->
+                <else-if type="post-weblog entry-encyclopedia post webpage" match="any">
+                    <text macro="author"/>
+                    <text macro="bib-separator"/>
+                    <text macro="bib-year"/>
+                    <text macro="bib-separator"/>
+                    <text macro='title-name'/>
+                    <text macro="bib-separator"/>
+                    <text macro='webpage-url'/>
+                </else-if>
+            </choose>
+            <text macro='end-placehold'/>
+        </layout>
+    </bibliography>
+</style>
