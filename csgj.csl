@@ -369,7 +369,7 @@
                 <!-- 学位论文 -->
                 <else-if type="thesis">
                     <text macro="author"/>
-                    <text macro="authorconnector"/>
+                    <text macro="author-connector"/>
                     <text macro='title-name'/>
                     <text macro='separator'/>
                     <text macro='thesis-type'/>
