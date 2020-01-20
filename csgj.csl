@@ -4,13 +4,13 @@
     <info>
         <title>综合性期刊文献引证技术规范</title>
         <id>citation-specification-for-general-journal</id>
-        <link href="https://xdxbs.xmu.edu.cn/_upload/article/files/ee/68/6ec516f0439eb4a1ac0a88179316/9afbe77e-5fb0-4b3d-b887-9e2527e4d791.doc" rel="self"/>
+        <link href="https://github.com/yangjh-xbmu/citation-specification-for-general-journal/blob/master/csgj.csl" rel="self"/>
         <link href="https://xdxbs.xmu.edu.cn/_upload/article/files/ee/68/6ec516f0439eb4a1ac0a88179316/9afbe77e-5fb0-4b3d-b887-9e2527e4d791.doc" rel="documentation"/>
         <author>
             <name>杨志宏</name>
             <email>yangjh@yeah.net</email>
         </author>
-        <category citation-format="numeric"/>
+
         <summary>实现了《综合性期刊文献引证技术规范》中的常用功能。但没有实现析出文献、古籍、档案、转引及再引及著者-出版年体例等功能。</summary>
         <updated>2020-1-20</updated>
         <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
