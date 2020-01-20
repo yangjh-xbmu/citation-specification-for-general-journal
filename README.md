@@ -6,11 +6,14 @@
 
 ## 安装
 
-打开 zetero `首选项`，选择`引用`，点击`+`即可。
+1. 下载[样式文件](https://github.com/yangjh-xbmu/citation-specification-for-general-journal/blob/master/csgj.csl)
+1. 打开 zetero `首选项`，选择`引用`，点击`+`，选择下载的样式文件。
+1. 点击`ok`，忽略安装警告信息，完成安装。
 
 ## 使用说明
 
 1. 中文文献的语言（language）值需要为空，不能有值。外文文献的语言（language）值需要有值，不能为空。所有文献都具有语言（language）字段，需要研究人员在添加题录时手工添加或修改。
+1. 著作类文献，在插入时，最好插入具体页码信息。
 
 ## 已完成功能
 
