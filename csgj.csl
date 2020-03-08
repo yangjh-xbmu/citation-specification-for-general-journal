@@ -409,45 +409,47 @@
                 <!-- 专著类 -->
                 <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
                     <text macro="author"/>
-                    <text macro="bib-separator"/>
-                    <text macro="bib-year"/>
-                    <text macro="bib-separator"/>
+                    <text macro="author-connector"/>
                     <text macro='title-name'/>
-                    <text macro="bib-separator"/>
+                    <text macro='separator'/>
                     <text macro='translator'/>
                     <text macro='location-publisher'/>
+                    <text macro='separator'/>
+                    <text macro='book-year'/>
                 </if>
                 <!-- 期刊 -->
                 <else-if type="article-journal article-magazine" match="any">
                     <text macro="author"/>
-                    <text macro="bib-separator"/>
-                    <text macro="bib-year"/>
-                    <text macro="bib-separator"/>
+                    <text macro="author-connector"/>
                     <text macro='article-name'/>
-                    <text macro="bib-separator"/>
-                    <text macro='container-bib-title'/>
+                    <text macro='separator'/>
+                    <text macro='container-title'/>
+                    <text macro='separator'/>
+                    <text macro='pages'/>
                 </else-if>
                 <!-- 学位论文 -->
                 <else-if type="thesis">
                     <text macro="author"/>
-                    <text macro="bib-separator"/>
-                    <text macro="bib-year"/>
-                    <text macro="bib-separator"/>
+                    <text macro="author-connector"/>
                     <text macro='title-name'/>
-                    <text macro="bib-separator"/>
+                    <text macro='separator'/>
                     <text macro='thesis-type'/>
-                    <text macro="bib-separator"/>
-                    <text macro='location-publisher'/>
+                    <text macro='separator'/>
+                    <text variable='publisher'/>
+                    <text macro='separator'/>
+                    <text macro='book-year'/>
                 </else-if>
                 <!-- 电子文献 -->
                 <else-if type="post-weblog entry-encyclopedia post webpage" match="any">
                     <text macro="author"/>
-                    <text macro="bib-separator"/>
-                    <text macro="bib-year"/>
-                    <text macro="bib-separator"/>
+                    <text macro="author-connector"/>
                     <text macro='title-name'/>
-                    <text macro="bib-separator"/>
+                    <text macro='separator'/>
+                    <text macro='webpage-issued'/>
+                    <text macro='separator'/>
                     <text macro='webpage-url'/>
+                    <text macro='separator'/>
+                    <text macro='webpage-accessed'/>
                 </else-if>
             </choose>
             <text macro='end-placehold'/>
