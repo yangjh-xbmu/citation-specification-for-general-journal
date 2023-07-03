@@ -13,6 +13,7 @@
 
     <summary>实现了《综合性期刊文献引证技术规范》中的常用功能。但没有实现析出文献、古籍、档案、转引及再引及著者-出版年体例等功能。</summary>
     <updated>2020-1-20</updated>
+    <!-- 英文用en，中文无 -->
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
 
@@ -21,7 +22,10 @@
     <names variable="author">
       <choose>
         <if variable="language">
-          <name delimiter=", " delimiter-precedes-last="always"/>
+          <name delimiter=", " delimiter-precedes-last="always">
+            <name-part name="family" />
+            <name-part name="given" />
+          </name>
         </if>
         <else>
           <name initialize-with=" " name-as-sort-order="all" sort-separator=" " delimiter="、" delimiter-precedes-last="always">
@@ -38,7 +42,7 @@
         <text value=", "/>
       </if>
       <else>
-        <text value="："/>
+        <text value=""/>
       </else>
     </choose>
   </macro>
