@@ -766,7 +766,7 @@
         </layout>
     </citation>
     <!-- 完整参考文献 -->
-    <bibliography entry-spacing="0" second-field-align="flush">
+    <bibliography>
         <sort>
             <!-- 将专著文献、期刊文献、学位论文、其他文献分类排版 -->
             <key macro="mini-type-code"/>
