@@ -3,7 +3,7 @@ items = zoteroPane.getSelectedItems();
 var result = "";
 
 // 列出常见的介词
-var prepositions = ["of", "in", "on", "and", "the", "with", "for", "to", "at", "by", "from"];
+var prepositions = ["of", "in", "on", "and", "the", "with", "for", "to", "at", "by", "from", "or", "as"];
 
 for(item of items) {
     var title = item.getField('title');
