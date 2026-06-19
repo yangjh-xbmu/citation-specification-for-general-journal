@@ -1,3 +1,12 @@
+---
+purpose: 提供符合《综合性期刊文献引证技术规范》的CSL样式，用于Zotero文献管理
+status: active
+next_steps: []
+capabilities:
+  - csl-style
+  - zotero-integration
+  - citation-formatting
+---
 # 综合性期刊文献引证技术规范 CSL 样式
 
 中国人文社科相当数量的期刊，使用《综合性期刊文献引证技术规范》进行文献引用，格式非常繁琐，极其容易出错。
